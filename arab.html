@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Arabic Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            /* UBAH: Latar belakang menjadi putih */
+            background: white; 
+            /* UBAH: Warna teks default menjadi hitam */
+            color: black; 
+        }
+
+        /* HEADER */
+        header {
+            /* UBAH: Latar belakang menjadi putih terang */
+            background: #f8f9fa; 
+            padding: 30px 20px;
+            text-align: center;
+            /* SESUAIKAN: Bayangan header untuk light mode */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); 
+        }
+
+        header h1 {
+            color: #38bdf8;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            /* UBAH: Teks menjadi abu-abu gelap */
+            color: #495057; 
+        }
+
+        /* CONTAINER */ 
+        .container {
+            padding: 50px 80px;
+        }
+
+        /* GRID VIDEO */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .video-box {
+            /* UBAH: Latar belakang card menjadi putih */
+            background: white;
+            border-radius: 20px;
+            padding: 12px;
+            border: 1px solid #38bdf8;
+            transition: 0.3s;
+            /* SESUAIKAN: Bayangan untuk light mode */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
+        }
+
+        .video-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            /* SESUAIKAN: Bayangan hover (tetap biru, tapi disesuaikan intensitasnya) */
+            box-shadow: 0 0 25px rgba(56,189,248,0.4); 
+        }
+
+        .video-box iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            border: none;
+        }
+
+        .video-title {
+            margin-top: 10px;
+            text-align: center;
+            color: #38bdf8;
+            font-size: 16px;
+        }
+
+        /* BUTTON */
+        .btn-box {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: #38bdf8;
+            /* Warna teks tombol tetap hitam (kontras dengan biru) */
+            color: black; 
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(56,189,248,0.5);
+        }
+
+        .back-btn:hover {
+            /* UBAH: Background hover menjadi biru lebih gelap */
+            background: #007bff; 
+            /* UBAH: Teks hover menjadi putih agar kontras */
+            color: white; 
+            /* SESUAIKAN: Bayangan hover untuk light mode (menggunakan bayangan gelap) */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.2); 
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fa-solid fa-language"></i> Arabic Learning</h1>
+    <p>Kumpulan Video Pembelajaran Bahasa Arab</p>
+</header>
+
+<div class="container">
+
+    <div class="video-grid">
+
+        <div class="video-box">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/AJHqizBVkYk?si=T_MmrVhqKlmZThmw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-title">Percakapan singkat Bahasa Arab</div>
+        </div>
+
+        
+
+        <div class="video-box">
+            <a href="https://youtube.com/shorts/JDxNu1kuLak?si=kcrMa994_I-R3L-v">
+                <img src="image/short.jpg" alt="video short">
+            </a>
+            <div class="video-title">tafsir surah an-nas</div>  
+        </div>
+
+        <div class="video-box">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/9NTjmG1oVRs?si=kN1RcfMMDzQwU9vT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-title">Tentang kedua orang tuaku </div>
+        </div>
+
+        </div>
+    
+    <div class="btn-box">
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Home
+        </a>
+    </div>
+
+</div>
+</body>
+</html>

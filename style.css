@@ -1,250 +1,414 @@
-/* Import Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css");
 
-/* Variabel Global untuk Warna */
-:root {
-    --bg-color: #1f242d; /* Warna latar belakang gelap */
-    --second-bg-color: #323946; /* Warna latar belakang bagian lain */
-    --text-color: #fff; /* Warna teks putih */
-    --main-color: #0ef; /* Warna aksen biru/cyan */
+html, body {
+    scroll-behavior: smooth;
 }
 
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    background: var(--bg-color);
-    color: var(--text-color);
+    background: white; /* UBAH: Hitam menjadi PUTIH */
+    color: black;      /* UBAH: Putih menjadi HITAM */
 }
 
-/* 1. HEADER / NAVIGASI */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* HEADER */
+header {
     width: 100%;
-    padding: 2rem 9%;
-    background: var(--bg-color);
+    padding: 20px 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: #f8f9fa; /* UBAH: #020617 (Gelap) menjadi Abu Muda/Putih */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambah bayangan agar terlihat berbeda dari body */
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 100;
 }
 
 .logo {
-    font-size: 2rem;
-    color: var(--text-color);
-    font-weight: 600;
-    cursor: default;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #38bdf8; /* Biru Muda Dibiarkan */
 }
 
-.navbar a {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-left: 3.5rem;
-    transition: .3s;
+nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: black; /* UBAH: Putih menjadi HITAM */
+    font-size: 18px;
+    transition: 0.3s;
+    position: relative;
 }
 
-.navbar a:hover,
-.navbar a.active {
-    color: var(--main-color);
+nav a:hover,
+nav a.active {
+    color: #38bdf8; /* Biru Muda Dibiarkan */
 }
 
-/* Pengaturan Umum untuk SECTION */
-section {
-    min-height: 100vh;
-    padding: 10rem 9% 2rem;
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #38bdf8; /* Biru Muda Dibiarkan */
+    transition: 0.3s;
 }
 
-.heading {
-    text-align: center;
-    font-size: 4.5rem;
+nav a:hover::after {
+    width: 100%;
 }
 
-.heading span {
-    color: var(--main-color);
-}
-
-/* 2. HOME SECTION */
+/* HOME */
 .home {
+    min-height: 100vh;
+    padding: 120px 80px 40px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: white; /* Pastikan section home juga putih */
 }
 
+/* IMAGE */
+.home-img img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #38bdf8; /* Biru Muda Dibiarkan */
+    transition: 0.3s;
+}
+
+.home-img img:hover {
+    transform: scale(1.05);
+}
+
+.flag-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* CONTENT */
 .home-content {
-    max-width: 60rem;
+    max-width: 600px;
 }
 
 .home-content h1 {
-    font-size: 5rem;
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: black; /* Tambah warna teks agar jelas di light mode */
 }
 
-.home-content h3 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--main-color);
+.home-content h1 span {
+    color: #38bdf8; /* Biru Muda Dibiarkan */
 }
 
-.home-img img {
-    width: 25vw; /* Sesuaikan ukuran gambar */
-    border-radius: 50%; /* Efek lingkaran */
+.typing-text {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #495057; /* UBAH: #94a3b8 menjadi warna abu-abu gelap */
 }
 
-/* Tombol */
-.btn-box {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 2rem;
+.home-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #495057; /* UBAH: #cbd5f5 menjadi warna abu-abu gelap */
 }
 
+/* SOSIAL ICON */
+.sosial-icons {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+
+.sosial-icons a {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    background: #f0f0f0; /* UBAH: #020617 menjadi Abu Muda/Putih */
+    border-radius: 50%;
+    border: 1px solid #38bdf8; /* Biru Muda Dibiarkan */
+    color: #38bdf8; /* Biru Muda Dibiarkan */
+    font-size: 20px;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.sosial-icons a:hover {
+    background: #38bdf8; /* Biru Muda Dibiarkan */
+    color: white; /* UBAH: Black menjadi PUTIH (agar kontras di atas Biru Muda) */
+}
+
+/* BUTTON */
 .btn {
     display: inline-block;
-    padding: 1rem 2.8rem;
-    background: var(--main-color);
-    border-radius: 4rem;
-    box-shadow: 0 0 1rem var(--main-color);
-    font-size: 1.2rem;
-    color: var(--bg-color);
-    letter-spacing: .1rem;
-    font-weight: 600;
-    transition: .5s ease;
+    margin-top: 15px;
+    padding: 12px 30px;
+    background: #38bdf8; /* Biru Muda Dibiarkan */
+    color: white; /* UBAH: Black menjadi PUTIH (agar kontras di atas Biru Muda) */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: 0.3s;
 }
 
 .btn:hover {
-    box-shadow: none;
+    background: #007bff; /* UBAH: White menjadi Biru yang lebih kuat agar terlihat jelas saat hover */
+    color: white; /* Teks tetap putih agar kontras */
 }
 
-/* Sosial Media */
-.social-media a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 4rem;
-    height: 4rem;
-    background: transparent;
-    border: .2rem solid var(--main-color);
-    border-radius: 50%;
-    font-size: 2rem;
-    color: var(--main-color);
-    margin: 3rem 1.5rem 3rem 0;
-    transition: .5s ease;
+/* GENERAL SECTION */
+section {
+    padding: 100px 80px;
+    background: white; /* Pastikan semua section putih */
 }
 
-.social-media a:hover {
-    background: var(--main-color);
-    color: var(--second-bg-color);
-    box-shadow: 0 0 1rem var(--main-color);
-}
-
-/* 3. ABOUT SECTION */
-.about {
-    background: var(--second-bg-color);
-}
-
-.about-content p {
-    font-size: 1.1rem;
-    margin: 2rem 0 3rem;
-}
-
-.skills ul {
-    list-style: none;
-    margin-top: 1rem;
-}
-
-.skills h3 {
-    color: var(--main-color);
-}
-
-/* 4. PROJECTS SECTION */
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tiga kolom */
-    gap: 2.5rem;
-}
-
-.project-box {
-    background: var(--bg-color);
-    padding: 3rem 2rem 4rem;
-    border-radius: 2rem;
+.title {
     text-align: center;
-    border: .2rem solid var(--bg-color);
-    transition: .5s ease;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #38bdf8; /* Biru Muda Dibiarkan */
 }
 
-.project-box:hover {
-    border-color: var(--main-color);
-    transform: scale(1.02);
-}
-
-.project-box img {
-    width: 100%;
-    border-radius: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.project-info h4 {
-    font-size: 1.8rem;
-}
-
-.project-links a {
-    font-size: 1.5rem;
-    color: var(--main-color);
-    margin: 0.5rem 0.5rem;
-}
-
-/* 5. CONTACT SECTION */
-.contact form {
-    max-width: 70rem;
-    margin: 0 auto;
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.contact form .input-box {
+/* ABOUT */
+.about-box {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.contact form .input-box input,
-.contact form textarea {
+.about-box img {
+    width: 260px;
+    border-radius: 20px;
+    border: 3px solid #38bdf8; /* Tambah border biru agar terlihat di light mode */
+}
+
+.about-text {
+    max-width: 600px;
+    line-height: 1.8;
+    color: black; /* Pastikan teks di about berwarna hitam */
+}
+
+/* SKILLS */
+.skills-box {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.skill-card {
+    background: #f0f0f0; /* UBAH: #020617 menjadi Abu Muda/Putih */
+    width: 160px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #38bdf8; /* Biru Muda Dibiarkan */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.skill-card img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.skill-card h4 {
+    color: #38bdf8; /* Biru Muda Dibiarkan */
+}
+
+
+
+/* EXPERIENCE */
+.experience-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.exp-card {
+    background: #f0f0f0; /* UBAH: #020617 menjadi Abu Muda/Putih */
+    border: 1px solid #38bdf8; /* Biru Muda Dibiarkan */
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.exp-card:hover {
+    transform: translateY(-8px);
+}
+
+.exp-card img {
     width: 100%;
-    padding: 1.5rem;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    background: var(--second-bg-color);
-    border-radius: .8rem;
-    margin: .7rem 0;
-    resize: none;
+    height: 180px;
+    object-fit: cover;
 }
 
-.contact form .input-box input:nth-child(2) {
-    margin-left: 1rem;
+.exp-card h3 {
+    margin: 15px 0;
+    color: #38bdf8; /* Biru Muda Dibiarkan */
 }
 
-.contact form button {
-    cursor: pointer;
+/* TOMBOL DENGAN BACKGROUND */
+.exp-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #38bdf8; /* Biru Muda Dibiarkan */
+    color: white; /* UBAH: Black menjadi PUTIH (agar kontras) */
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.exp-btn:hover {
+    background: #007bff; /* UBAH: White menjadi Biru yang lebih kuat agar terlihat jelas saat hover */
+    color: white; /* Teks tetap putih agar kontras */
+}
+
+
+/* CONTACT */
+#contact {
+    background: white; /* Pastikan contact section putih */
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0; /* UBAH: #020617 menjadi Abu Muda/Putih */
+    color: #38bdf8; /* Biru Muda Dibiarkan */
+    font-size: 28px;
+    border-radius: 50%;
+    border: 2px solid #38bdf8; /* Biru Muda Dibiarkan */
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    background-color: #38bdf8; /* Biru Muda Dibiarkan */
+    color: #f0f0f0; /* UBAH: #020617 menjadi PUTIH/ABU MUDA (agar kontras di atas biru) */
+    transform: scale(1.1);
+}
+
+#typing {
+    color: #38bdf8; /* Biru Muda Dibiarkan */
+    font-weight: bold;
+}
+
+.cursor {
+    display: inline-block;
+    background-color: #38bdf8; /* Biru Muda Dibiarkan */
+    width: 2px;
+    animation: blink 0.7s infinite;
+    margin-left: 2px;
+    vertical-align: bottom;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
 }
 
 /* FOOTER */
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 9%;
-    background: var(--second-bg-color);
+footer {
+    background: #f8f9fa; /* UBAH: Background Footer menjadi Putih/Abu Muda */
+    color: black; /* UBAH: Teks Footer menjadi Hitam */
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+.footer-icons a {
+    color: #38bdf8;
 }
 
-.footer p {
-    font-size: 1rem;
+
+/* MEDIA QUERIES & HAMBURGER MENU */
+/* ... (Bagian Media Queries dan Hamburger Menu) ... */
+
+@media (max-width: 768px) {
+    /* ... */
+    nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #f8f9fa; /* UBAH: #020617 menjadi Putih/Abu Muda */
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+        color: black; /* Teks menu diubah ke hitam */
+        /* ... */
+    }
+
+    /* ... */
+}
+
+/* animasi */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.9s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css");
+
+/* ... (CSS di bagian atas, body, header, dll. TIDAK BERUBAH) ... */
+
+/* animasi */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    /* UBAH DURASI TRANSISI DI SINI */
+    transition: all 1.5s ease; /* Dibuat lebih lambat (dari 0.9s menjadi 1.5s) */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ... (Sisa kode CSS di bagian bawah TIDAK BERUBAH) ... */
+
+.reveal.active {
+    opacity: 1; /* Transisi berakhir, elemen terlihat penuh */
+    transform: translateY(0); /* Kembali ke posisi aslinya */
 }
