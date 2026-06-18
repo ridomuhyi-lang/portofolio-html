@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Ridho-Muhyi Portfolio</title>
+    
+    <audio id="typingSound" src="https://assets.mixkit.co/sfx/preview/mixkit-fast-typing-on-keyboard-2541.mp3"></audio>
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --header-bg: #ffffff;
+            --card-bg: #f8f9fa;
+            --span-color: #111111;
+            --about-bg: #ffffff;
+            --about-text: #111111;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --header-bg: #1a1a1a;
+            --card-bg: #1e1e1e;
+            --span-color: #38bdf8;
+            --about-bg: #1e1e1e;
+            --about-text: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body, header, nav, a, button, div, section, p, h1, h2, h3, h4 {
+            transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        html, body {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* EFEK 3D TILT FOTO PROFILE & ABOUT */
+        .home-img img, .about-img img {
+            width: 380px !important;  
+            height: 380px !important; 
+            object-fit: cover !important; 
+            object-position: center !important;
+            border-radius: 20px !important; 
+            border: 5px solid #ffffff !important; 
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
+            transform-style: preserve-3d !important;
+            perspective: 1000px !important;
+            transition: transform 0.25s ease-out, box-shadow 0.4s ease !important;
+        }
+
+        .home-img img.balik-normal, .about-img img.balik-normal {
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.8s ease !important;
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) !important;
+        }
+
+        section {
+            padding: 120px 10% 80px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        span {
+            color: #38bdf8;
+        }
+
+        body.dark-mode .logo span, 
+        body.dark-mode .about h2 span, 
+        body.dark-mode .contact h2 span {
+            color: var(--span-color);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            color: #38bdf8;
+        }
+
+        .theme-toggle {
+            background: #38bdf8;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        body.dark-mode .theme-toggle {
+            background: #ffffff;
+            color: #121212;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .menu-icon span {
+            width: 28px;
+            height: 3px;
+            background-color: var(--text-color);
+            border-radius: 2px;
+        }
+
+        .home {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .home-content {
+            flex: 1;
+        }
+
+        .home-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .home-content h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .home-content p {
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .home-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sosial-icons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .sosial-icons a {
+            font-size: 24px;
+            color: var(--text-color);
+        }
+
+        .sosial-icons a:hover {
+            color: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #38bdf8;
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-text {
+            flex: 2 1 400px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* UPGRADED SKILLS STYLING */
+        .skills-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .skill-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-desc {
+            font-size: 13.5px;
+            opacity: 0.8;
+            line-height: 1.5;
+            margin: 12px 0 18px;
+            min-height: 60px; /* Keeps card heights balanced */
+        }
+
+        /* Progress Bar Styling */
+        .progress-container {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 18px;
+            width: 100%;
+        }
+        body.dark-mode .progress-container {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            background-color: #38bdf8;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Specific Hover Glow Effects */
+        .html-card:hover {
+            box-shadow: 0 12px 25px rgba(227, 76, 38, 0.25) !important;
+            border: 1px solid rgba(227, 76, 38, 0.4);
+        }
+        .css-card:hover {
+            box-shadow: 0 12px 25px rgba(38, 77, 228, 0.25) !important;
+            border: 1px solid rgba(38, 77, 228, 0.4);
+        }
+        .arabic-card:hover {
+            box-shadow: 0 12px 25px rgba(22, 163, 74, 0.25) !important;
+            border: 1px solid rgba(22, 163, 74, 0.4);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.15);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .experience-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .exp-card, .project-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 25px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .exp-card img, .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: block;
+            background-color: #333;
+        }
+
+        .exp-card h3, .project-details h4 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .project-details p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .exp-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #38bdf8;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: auto;
+        }
+
+        .exp-card:hover, .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(56, 189, 248, 0.2);
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .contact-link {
+            font-size: 40px;
+            color: var(--text-color);
+        }
+
+        .contact-link:hover {
+            color: #38bdf8;
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #111111;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: var(--delay, 0ms);
+        }
+
+        /* FIXED LINE BELOW (Added closing parenthesis) */
+        @media (max-width: 768px) {
+            header { padding: 15px 5%; }
+            .menu-icon { display: flex; }
+            .menu-icon.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+            .menu-icon.active span:nth-child(2) { opacity: 0; }
+            .menu-icon.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+            .navbar {
+                position: absolute;
+                top: -450px;
+                left: 0;
+                width: 100%;
+                background-color: var(--header-bg);
+                flex-direction: column;
+                padding: 40px 0;
+                gap: 25px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                z-index: 1001;
+            }
+
+            .navbar.active { top: 100%; }
+            section { padding: 100px 5% 60px; }
+            .home { flex-direction: column-reverse; text-align: center; gap: 40px; padding-top: 140px; }
+            .home-content h1 { font-size: 32px; }
+            .home-img img { width: 240px !important; height: 240px !important; }
+            .sosial-icons { justify-content: center; }
+            .about-container { flex-direction: column; text-align: center; }
+        }
+
+        /* DROPDOWN MENU */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .btn-small.dropbtn {
+            background-color: #38bdf8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(56, 189, 248, 0.2);
+            width: 100%;
+        }
+
+        .btn-small.dropbtn:hover {
+            background-color: #0ea5e9;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: var(--card-bg);
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            padding: 8px 0;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            color: var(--text-color);
+            padding: 10px 16px;
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+        }
+
+        .dropdown-container:hover .dropdown-menu,
+        .dropdown-container.active .dropdown-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .experience-box { grid-template-columns: 1fr; gap: 30px; }
+            .exp-card, .project-card { height: auto; padding: 20px 15px; }
+            .dropdown-container { display: block; width: 100%; margin-top: 10px; }
+            .dropdown-menu {
+                position: relative; top: 10px; left: 0; width: 100%;
+                transform: none; opacity: 1; pointer-events: auto;
+                box-shadow: none; border: 1px solid rgba(56, 189, 248, 0.3); display: none;
+            }
+            .dropdown-container:hover .dropdown-menu,
+            .dropdown-container.active .dropdown-menu { display: block; transform: none; }
+        }
+        /* ==========================================
+   CSS LENGKAP UNTUK 6 SKILLS (BIAR MANTAP)
+   ========================================== */
+
+.skills-box a.skill-card {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skill-card {
+    transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease !important;
+}
+
+/* 1. Glow HTML (Oranye) */
+.html-card:hover {
+    box-shadow: 0 12px 25px rgba(227, 76, 38, 0.3) !important;
+    border: 1px solid rgba(227, 76, 38, 0.5);
+    transform: translateY(-8px);
+}
+
+/* 2. Glow CSS (Biru) */
+.css-card:hover {
+    box-shadow: 0 12px 25px rgba(38, 77, 228, 0.3) !important;
+    border: 1px solid rgba(38, 77, 228, 0.5);
+    transform: translateY(-8px);
+}
+
+/* 3. Glow JavaScript (Kuning) */
+.js-card:hover {
+    box-shadow: 0 12px 25px rgba(247, 223, 30, 0.25) !important;
+    border: 1px solid rgba(247, 223, 30, 0.5);
+    transform: translateY(-8px);
+}
+
+/* 4. Glow Python (Biru/Kuning Python) */
+.python-card:hover {
+    box-shadow: 0 12px 25px rgba(55, 118, 171, 0.3) !important;
+    border: 1px solid rgba(55, 118, 171, 0.5);
+    transform: translateY(-8px);
+}
+
+/* 5. Glow Django (Hijau Tua) */
+.django-card:hover {
+    box-shadow: 0 12px 25px rgba(9, 46, 32, 0.4) !important;
+    border: 1px solid rgba(9, 46, 32, 0.6);
+    transform: translateY(-8px);
+}
+
+/* 6. Glow Arabic (Hijau Sukses) */
+.arabic-card:hover {
+    box-shadow: 0 12px 25px rgba(22, 163, 74, 0.3) !important;
+    border: 1px solid rgba(22, 163, 74, 0.5);
+    transform: translateY(-8px);
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.15);
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="logo">R<span>idh</span>o<span> M</span>.</a>
+        <div class="menu-icon" id="menuIcon">
+            <span></span><span></span><span></span>
+        </div>
+        <nav class="navbar" id="navbar">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <button id="themeToggleBtn" class="theme-toggle">
+                <i class="fas fa-moon"></i> Theme
+            </button>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1 class="reveal" style="--delay: 0ms;">Hi, I'm <span>Ridho Muhyi</span></h1>
+            <h3 class="reveal" style="--delay: 150ms;">I'm a <span id="typing"></span><span class="cursor">|</span></h3>
+            <p class="reveal" style="--delay: 300ms;">I'm a student interested in web development, particularly front-end development.</p>
+            <div class="sosial-icons reveal" style="--delay: 450ms;">
+                <a href="https://www.instagram.com/rido_521/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://github.com/ridomuhyi-lang" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://wa.me/6285609767566" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@ridomuhyi" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            </div> 
+            <a href="#contact" class="btn reveal" style="--delay: 600ms;">Contact me.</a>
+        </div>
+        <div class="home-img reveal" style="--delay: 150ms;">
+            <img src="image/profile.png" alt="my profile">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2 class="title reveal" style="--delay: 0ms;">About <span>Me</span> </h2>
+        <div class="about-container">
+            <div class="about-img reveal" style="--delay: 200ms;">
+                <img src="image/about.png" alt="About Ridho">
+            </div>
+            <div class="about-text">
+                <p class="reveal" style="--delay: 350ms;"> Welcome to my digital space! Halo, nama gw Ridho Muhyi, lahir di Lampung Timur pada tanggal 16 Desember 2009. Gw adalah seorang pelajar yang punya ketertarikan besar di dunia teknologi and coding! 🚀</p>
+                <p class="reveal" style="--delay: 500ms;">💡 Saat ini, gw lagi fokus banget buat mendalami dan menguasai HTML5 and CSS3 . Gw percaya kalau fondasi yang kuat di coding dasar ini bakal jadi langkah awal yang keren buat jadi developer pro di masa depan. Always eager to learn and ready for new challenges! 🔥</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+    <h2 class="title reveal">My <span>Skills</span></h2>
+    <div class="skills-box">
+        
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-card html-card reveal" style="--delay: 100ms;">
+            <div class="skill-icon" style="color: #e34c26;"><i class="fab fa-html5"></i></div>
+            <h3>HTML5</h3>
+            <p class="skill-desc">Structuring modern web contents.</p>
+            <div class="progress-container"><div class="progress-bar" style="width: 90%;">90%</div></div>
+        </a>
+
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="skill-card css-card reveal" style="--delay: 200ms;">
+            <div class="skill-icon" style="color: #264de4;"><i class="fab fa-css3-alt"></i></div>
+            <h3>CSS3</h3>
+            <p class="skill-desc">Styling and responsive layouts.</p>
+            <div class="progress-container"><div class="progress-bar" style="width: 85%;">85%</div></div>
+        </a>
+
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="skill-card js-card reveal" style="--delay: 300ms;">
+            <div class="skill-icon" style="color: #f7df1e;"><i class="fab fa-js-square"></i></div>
+            <h3>JavaScript</h3>
+            <p class="skill-desc">Adding interactivity and logic to webs.</p>
+            <div class="progress-container"><div class="progress-bar" style="width: 80%;">80%</div></div>
+        </a>
+
+        <a href="https://docs.python.org/3/" target="_blank" class="skill-card python-card reveal" style="--delay: 400ms;">
+            <div class="skill-icon" style="color: #3776AB;"><i class="fab fa-python"></i></div>
+            <h3>Python</h3>
+            <p class="skill-desc">Backend development and automation.</p>
+            <div class="progress-container"><div class="progress-bar" style="width: 80%;">80%</div></div>
+        </a>
+
+        <a href="https://docs.djangoproject.com/en/stable/" target="_blank" class="skill-card django-card reveal" style="--delay: 500ms;">
+            <div class="skill-icon" style="color: #092E20;"><i class="fas fa-server"></i></div>
+            <h3>Django</h3>
+            <p class="skill-desc">High-level Python web framework.</p>
+            <div class="progress-container"><div class="progress-bar" style="width: 75%;">75%</div></div>
+        </a>
+
+        <a href="https://en.wikipedia.org/wiki/Arabic" target="_blank" class="skill-card arabic-card reveal" style="--delay: 600ms;">
+            <div class="skill-icon" style="color: #16a34a;"><i class="fas fa-language"></i></div>
+            <h3>Arabic Language</h3>
+            <p class="skill-desc">Localization and right-to-left (RTL) layout styling.</p>
+            <div class="progress-container"><div class="progress-bar" style="width: 85%;">85%</div></div>
+        </a>
+
+    </div>
+</section>
+
+    <section class="experience" id="experience">
+        <h2 class="title reveal" style="--delay: 0ms;">My Experience</h2>
+        <div class="experience-box">
+            <div class="exp-card reveal" style="--delay: 100ms;">
+                <img src="image/arab.jpg" alt="Arabic">
+                <h3>Arabic Learning</h3>
+                <a href="arab.html" class="exp-btn">see video</a>
+            </div>
+            <div class="exp-card reveal" style="--delay: 250ms;">
+                <img src="image/html.jpg" alt="IT">
+                <h3>IT Learning</h3>
+                <a href="itlearning.html" target="_blank" class="exp-btn">view project</a>
+            </div>
+            <div class="exp-card reveal" style="--delay: 400ms;">
+                <img src="image/qur'an.jpg" alt="Quran">
+                <h3>Qur'an learning</h3>
+                <a href="qur'an.html" class="exp-btn">see video</a>
+            </div>
+        
+            <div class="project-card reveal" style="--delay: 550ms;">
+                <img src="image/aqidatuna.jpg" alt="Tugas Sebelumnya">
+                <div class="project-details">
+                    <h4><b>AQIDATUNA</b></h4>
+                    <p>Aqidatuna.</p>
+                    <div class="dropdown-container">
+                        <button class="btn-small dropbtn">
+                            View video <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="https://drive.google.com/file/d/1mkmSmKA9VQFm9qXtX3nRfJBQ3eOkRQex/view?usp=drive_link" target="_blank">Aqidatuna Marhalah 1</a>
+                            <a href="https://drive.google.com/file/d/1rfJ9VhNhGsw23jM1gKxQtt8UVW2qPCOt/view?usp=drive_link" target="_blank">Aqidatuna Marhalah 2</a>
+                            <a href="https://drive.google.com/file/d/17JkIzpQivqqM4M1OI3DkX25dtIU12vDE/view?usp=drive_link" target="_blank">Aqidatuna Marhalah 3</a>
+                        </div>
+                    </div> </div> </div> 
+            
+            <div class="project-card reveal" style="--delay: 700ms;">
+                <img src="image/fathul'ali.jpg" alt="Tugas Sebelumnya">
+                <div class="project-details">
+                    <h4><B>FATHUL'ALI</B></h4>
+                    <p>Fathul'ali.</p>
+                    <div class="dropdown-container">
+                        <button class="btn-small dropbtn">
+                            view video <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="https://drive.google.com/file/d/1OGd6tSjaBgaZtwpBH9-wsp6ZkionzdE3/view?usp=drive_link" target="_blank">Fathul'ali Marhalah 1</a>
+                            <a href="https://drive.google.com/file/d/1xboB5QxVQZVNFU8BKOX9RrvKRdYhUO0Q/view?usp=drive_link" target="_blank">Fathul'ali Marhalah 2</a>
+                            <a href="https://drive.google.com/file/d/1JcgmkhnT6PEaiCmA1j_Q6AJhvng5RDP3/view?usp=drive_link" target="_blank">Fathul'ali Marhalah 3</a>
+                        </div>
+                    </div> </div> </div> 
+            
+            <div class="project-card reveal" style="--delay: 850ms;">
+                <img src="image/portofolio.png" alt="Tugas Sebelumnya">
+                <div class="project-details">
+                    <h4><B>PORTOFOLIO <I>PROJECT</I></B></h4>
+                    <p>Written portfolio</p>
+                    <div class="dropdown-container">
+                        <button class="btn-small dropbtn">
+                            View Proyek <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="https://docs.google.com/document/d/1G7ZfbCVRUto9ifazavNio0RpPLQVkGdlEiyFR5ZW5q0/edit" target="_blank">Written portfolio</a>
+                        </div>
+                    </div> </div> </div> </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="title reveal" style="--delay: 0ms;">Contact <span>Me</span></h2>
+        <div class="contact-icons reveal" style="--delay: 200ms;">
+            <a href="https://www.instagram.com/rido_521/" target="_blank" class="contact-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/6285609767566" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ridho Muhyi. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const targets = document.querySelectorAll(".home-img img, .about-img img");
+            targets.forEach(img => {
+                img.addEventListener("mousemove", function (e) {
+                    this.classList.remove("balik-normal");
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left; 
+                    const y = e.clientY - rect.top;  
+                    const midX = rect.width / 2;
+                    const midY = rect.height / 2;
+                    const rotasiY = ((x - midX) / midX) * 15; 
+                    const rotasiX = ((midY - y) / midY) * 15; 
+                    this.style.setProperty("transform", `perspective(1000px) rotateX(${rotasiX}deg) rotateY(${rotasiY}deg) scale(1.03)`, "important");
+                });
+                img.addEventListener("mouseleave", function () {
+                    this.style.removeProperty("transform");
+                    this.classList.add("balik-normal");
+                });
+            });
+        });
+
+        // Dropdown
+        document.querySelectorAll('.dropbtn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.parentElement.classList.toggle('active');
+            });
+        });
+        window.addEventListener('click', function() {
+            document.querySelectorAll('.dropdown-container').forEach(el => el.classList.remove('active'));
+        });
+        
+        // Typing Effect
+        const texts = ["Student Front-End Developer", "HTML & CSS Learner", "Tech Enthusiast"];
+        const typingElement = document.getElementById("typing");
+        const sound = document.getElementById("typingSound");
+        let textIndex = 0, charIndex = 0, isDeleting = false;
+
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            if (!isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                sound.currentTime = 0;
+                sound.play().catch(() => {});
+                if (charIndex === currentText.length) setTimeout(() => isDeleting = true, 1200);
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; }
+            }
+            setTimeout(typeEffect, isDeleting ? 60 : 120);
+        }
+        typeEffect();
+
+        // OMNI DIRECTIONAL DYNAMIC SCROLL REVEAL (Anti-Refresh Bug)
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            const windowHeight = window.innerHeight;
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < windowHeight - 50 && rect.bottom > 0) {
+                    el.classList.add("active");
+                } else {
+                    el.classList.remove("active");
+                }
+            });
+        }
+        reveal();
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("DOMContentLoaded", reveal);
+        window.addEventListener("load", reveal);
+        setTimeout(reveal, 300);
+
+        // Navbar Menu Mobile
+        const menuIcon = document.getElementById("menuIcon"), navbar = document.getElementById("navbar");
+        menuIcon.addEventListener("click", () => { menuIcon.classList.toggle("active"); navbar.classList.toggle("active"); });
+        document.querySelectorAll(".nav-link").forEach(l => l.addEventListener("click", () => { menuIcon.classList.remove("active"); navbar.classList.remove("active"); }));
+
+        // Dark Theme Toggle
+        const btn = document.getElementById("themeToggleBtn");
+        if(localStorage.getItem("theme") === "dark") { document.body.classList.add("dark-mode"); btn.innerHTML = '<i class="fas fa-sun"></i> Theme'; }
+        btn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            btn.innerHTML = isDark ? '<i class="fas fa-sun"></i> Theme' : '<i class="fas fa-moon"></i> Theme';
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+    </script>
+</body>
+</html>
